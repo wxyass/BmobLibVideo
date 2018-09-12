@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //第一：默认初始化
+        // 默认初始化
         Bmob.initialize(this, "4c1af865be4b31c8e2bae4e8f1f2b78c");
         addData();
         // getoneData();
@@ -34,11 +34,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void done(String objectId,BmobException e) {
                 if(e==null){
-                    Toast.makeText(MainActivity.this,"添加数据成功，返回objectId为："+objectId,Toast.LENGTH_SHORT).show();
+                    toast("添加数据成功，返回objectId为："+objectId);
                 }else{
-                    Toast.makeText(MainActivity.this,"创建数据失败：" + e.getMessage(),Toast.LENGTH_SHORT).show();
+                    toast("创建数据失败：" + e.getMessage());
                 }
             }
         });
+    }
+
+    //
+    public void toast(String msg){
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }
